@@ -84,19 +84,19 @@ public class RTextArea extends RTextAreaBase implements Printable {
      *
      * @see #setCaretStyle(int, CaretStyle)
      */
-    public static final int INSERT_MODE				= 0;
+    public static final int INSERT_MODE             = 0;
 
     /**
      * Constant representing overwrite mode.
      *
      * @see #setCaretStyle(int, CaretStyle)
      */
-    public static final int OVERWRITE_MODE				= 1;
+    public static final int OVERWRITE_MODE              = 1;
 
     /**
      * The property fired when the "mark all" color changes.
      */
-    public static final String MARK_ALL_COLOR_PROPERTY	= "RTA.markAllColor";
+    public static final String MARK_ALL_COLOR_PROPERTY  = "RTA.markAllColor";
 
     /**
      * The property fired when the "mark all on occurrence" property changes.
@@ -113,15 +113,15 @@ public class RTextArea extends RTextAreaBase implements Printable {
     /*
      * Constants for all actions.
      */
-    private static final int MIN_ACTION_CONSTANT	= 0;
-    public static final int COPY_ACTION				= 0;
-    public static final int CUT_ACTION				= 1;
-    public static final int DELETE_ACTION			= 2;
-    public static final int PASTE_ACTION			= 3;
-    public static final int REDO_ACTION				= 4;
-    public static final int SELECT_ALL_ACTION		= 5;
-    public static final int UNDO_ACTION				= 6;
-    private static final int MAX_ACTION_CONSTANT	= 6;
+    private static final int MIN_ACTION_CONSTANT    = 0;
+    public static final int COPY_ACTION             = 0;
+    public static final int CUT_ACTION              = 1;
+    public static final int DELETE_ACTION           = 2;
+    public static final int PASTE_ACTION            = 3;
+    public static final int REDO_ACTION             = 4;
+    public static final int SELECT_ALL_ACTION       = 5;
+    public static final int UNDO_ACTION             = 6;
+    private static final int MAX_ACTION_CONSTANT    = 6;
 
     private static final Color DEFAULT_MARK_ALL_COLOR = new Color(0xffc800);
 
@@ -131,7 +131,7 @@ public class RTextArea extends RTextAreaBase implements Printable {
     private int textMode;
 
     // All macros are shared across all RTextAreas.
-    private static boolean recordingMacro;		// Whether we're recording a macro.
+    private static boolean recordingMacro;      // Whether we're recording a macro.
     private static Macro currentMacro;
 
     /**
@@ -171,7 +171,7 @@ public class RTextArea extends RTextAreaBase implements Printable {
     private static RecordableTextAction redoAction;
     private static RecordableTextAction selectAllAction;
 
-    private static IconGroup iconGroup;		// Info on icons for actions.
+    private static IconGroup iconGroup;     // Info on icons for actions.
 
     private transient RUndoManager undoManager;
 
@@ -181,9 +181,9 @@ public class RTextArea extends RTextAreaBase implements Printable {
 
     private boolean markAllOnOccurrenceSearches;
 
-    private CaretStyle[] carets;	// Index 0=>insert caret, 1=>overwrite.
+    private CaretStyle[] carets;    // Index 0=>insert caret, 1=>overwrite.
 
-    private static final String MSG	= "org.fife.ui.rtextarea.RTextArea";
+    private static final String MSG = "org.fife.ui.rtextarea.RTextArea";
 
 
     /**
@@ -560,22 +560,23 @@ public class RTextArea extends RTextAreaBase implements Printable {
         return new RUndoManager(this);
     }
 
-    /**
-     *
-     * @return  the current undo manager.
-     */
-    protected RUndoManager getUndoManager() {
-        return undoManager;
-    }
+    
+   /**
+    *
+    * @return  the current undo manager.
+    */
+   protected RUndoManager getUndoManager() {
+       return undoManager;
+   }
 
-
+   
     /**
      * Removes all undoable edits from this document's undo manager.  This
      * method also makes the undo/redo actions disabled.
      */
     public void discardAllEdits() {
         // NOTE:  For some reason, it appears I have to create an entirely new
-        // 	<code>undoManager</code> for undo/redo to continue functioning
+        //  <code>undoManager</code> for undo/redo to continue functioning
         // properly; if I don't, it only ever lets you do one undo.  Not
         // too sure why this is...
         undoManager.discardAllEdits();
@@ -1567,7 +1568,7 @@ public class RTextArea extends RTextAreaBase implements Printable {
             markAllHighlightPainter.setPaint(color);
             RTextAreaHighlighter h = (RTextAreaHighlighter)getHighlighter();
             if (h.getMarkAllHighlightCount()>0) {
-                repaint();	// Repaint if words are highlighted.
+                repaint();  // Repaint if words are highlighted.
             }
             firePropertyChange(MARK_ALL_COLOR_PROPERTY, old, color);
         }
